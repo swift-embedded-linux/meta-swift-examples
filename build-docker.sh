@@ -18,9 +18,9 @@ if [[ $USERNAME == "root" ]]; then
   USERNAME=yocto
 fi
 
-docker build --tag "${DOCKER_IMAGE_TAG}" \
+$DOCKER_CMD build --tag "${DOCKER_IMAGE_TAG}" \
              --build-arg "DOCKER_WORKDIR=${DOCKER_WORKDIR}" \
              --build-arg "USER=$USERNAME" \
-             --build-arg "host_uid=$(id -u)" \
-             --build-arg "host_gid=$(id -g)" \
-             -f ubuntu22.04.dockerfile \
+             --build-arg "UID=$(id -u)" \
+             --build-arg "GID=$(id -g)" \
+             -f ubuntu22.04.dockerfile .

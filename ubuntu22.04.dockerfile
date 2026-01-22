@@ -20,8 +20,8 @@ RUN chmod +x /neovim-installer.sh && \
 # Set up locales
 RUN locale-gen en_US.UTF-8 && \
     update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 # Ensure /bin/sh points to bash (Yocto requires this)
 RUN ln -sf bash /bin/sh
@@ -39,7 +39,9 @@ RUN useradd -m -s /bin/bash ${USER} && \
 
 # Ensure user has the correct UID/GID for volume-mounted builds
 ARG USER
-RUN usermod -u $(id -u ${USER}) -g $(id -g ${USER}) ${USER}
+ARG UID
+ARG GID
+RUN usermod -u ${UID} -g ${GID} ${USER}
 
 # Set working directory
 ARG DOCKER_WORKDIR
