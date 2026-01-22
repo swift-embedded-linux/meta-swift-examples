@@ -33,6 +33,7 @@ fi
 docker run -it --rm \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
-  --cap-add=NET_ADMIN \
+  --cap-add NET_ADMIN \
+  --cap-add NET_RAW \
     "${DOCKER_IMAGE_TAG}" \
-    "$@"
+     "$@"
