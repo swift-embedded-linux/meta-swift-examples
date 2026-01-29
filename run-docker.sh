@@ -12,11 +12,11 @@
 #
 # The script can be run with or without parameter:
 #
-#   $ ./docker-run.sh
+#   $ ./run-docker.sh
 #
 # to go into docker container prompt or:
 #
-#   $ ./docker-run.sh ${IMX_RELEASE}/yocto-build.sh
+#   $ ./run-docker.sh ${IMX_RELEASE}/yocto-build.sh
 #
 # to run yocto-build script inside container
 #
@@ -35,5 +35,5 @@ $CONTAINER_ENGINE run -it --rm \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \
-    "${DOCKER_IMAGE_TAG}" \
+    "${IMAGE_TAG}" \
     "$@"

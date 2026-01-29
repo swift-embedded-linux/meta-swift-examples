@@ -19,7 +19,7 @@ if [[ $USERNAME == "root" ]]; then
 fi
 
 $CONTAINER_ENGINE build --tag "${DOCKER_IMAGE_TAG}" \
-             --build-arg "DOCKER_WORKDIR=${DOCKER_WORKDIR}" \
+             --build-arg "DOCKER_WORKDIR=${WORKDIR}" \
              --build-arg "USER=$USERNAME" \
              --build-arg "UID=$(id -u)" \
              --build-arg "GID=$(id -g)" \

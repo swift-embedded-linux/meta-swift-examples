@@ -4,8 +4,8 @@
 
 # Docker
 
-DOCKER_IMAGE_TAG="meta-swift-project"
-DOCKER_WORKDIR="$PWD"
+IMAGE_TAG="meta-swift-project"
+WORKDIR="$PWD"
 
 if [ -z "$CONTAINER_ENGINE" ]; then
   if command -v docker ps &> /dev/null; then
