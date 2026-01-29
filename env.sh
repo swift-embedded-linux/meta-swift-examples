@@ -8,9 +8,9 @@ IMAGE_TAG="meta-swift-project"
 WORKDIR="$PWD"
 
 if [ -z "$CONTAINER_ENGINE" ]; then
-  if command -v docker ps &> /dev/null; then
+  if docker ps &> /dev/null; then
     CONTAINER_ENGINE="docker"
-  elif command -v podman ps &> /dev/null; then
+  elif podman ps &> /dev/null; then
     CONTAINER_ENGINE="podman"
   else
     echo "Error: Could not find installed or running 'docker' or 'podman'."
