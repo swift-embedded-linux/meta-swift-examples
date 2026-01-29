@@ -30,8 +30,8 @@ if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
 fi
 
 # run the docker image
-$DOCKER_CMD run -it --rm \
-  ${DOCKER_RUN_PARAMS} \
+$CONTAINER_ENGINE run -it --rm \
+  ${CONTAINER_RUN_PARAMS} \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \

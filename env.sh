@@ -7,26 +7,26 @@
 DOCKER_IMAGE_TAG="meta-swift-project"
 DOCKER_WORKDIR="$PWD"
 
-if [ -z "$DOCKER_CMD" ]; then
-  if command -v "docker ps" &> /dev/null; then
-    DOCKER_CMD="docker"
+if [ -z "$CONTAINER_ENGINE" ]; then
+  if command -v docker ps &> /dev/null; then
+    CONTAINER_ENGINE="docker"
   elif command -v podman ps &> /dev/null; then
-    DOCKER_CMD="podman"
+    CONTAINER_ENGINE="podman"
   else
     echo "Error: Could not find installed or running 'docker' or 'podman'."
     exit 1
   fi
 
-  echo "Found ${DOCKER_CMD}, this will be used as the container runtime."
+  echo "Found ${CONTAINER_ENGINE}, this will be used as the container runtime."
 fi
 
-if [ "$DOCKER_CMD" = "docker" ]; then
+if [ "$CONTAINER_ENGINE" = "docker" ]; then
   # Add extra params for docker if needed
-  DOCKER_RUN_PARAMS=""
-elif [ "$DOCKER_CMD" = "podman" ]; then
-  DOCKER_RUN_PARAMS="--userns=keep-id:uid=$(id -u),gid=$(id -g)"
+  CONTAINER_RUN_PARAMS=""
+elif [ "$CONTAINER_ENGINE" = "podman" ]; then
+  CONTAINER_RUN_PARAMS="--userns=keep-id:uid=$(id -u),gid=$(id -g)"
 else
-  echo "Error: Unsupported container runtime '${DOCKER_CMD}'."
+  echo "Error: Unsupported container runtime '${CONTAINER_ENGINE}'."
   exit 1
 fi
 
