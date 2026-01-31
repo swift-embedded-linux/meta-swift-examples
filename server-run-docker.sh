@@ -12,5 +12,5 @@ docker run -i --rm \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \
-    "${DOCKER_IMAGE_TAG}" \
+    "${IMAGE_TAG}" \
     "$@"

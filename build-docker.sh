@@ -18,7 +18,7 @@ if [[ $USERNAME == "root" ]]; then
   USERNAME=yocto
 fi
 
-$CONTAINER_ENGINE build --tag "${DOCKER_IMAGE_TAG}" \
+$CONTAINER_ENGINE build --tag "${IMAGE_TAG}" \
              --build-arg "DOCKER_WORKDIR=${WORKDIR}" \
              --build-arg "USER=$USERNAME" \
              --build-arg "UID=$(id -u)" \
