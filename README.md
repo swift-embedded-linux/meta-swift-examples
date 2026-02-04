@@ -5,7 +5,7 @@ for a sizeable set of supported Yocto machines for the purpose of evalulation an
 
 The following machines are supported and have been tested:
 
-- `qemuarm`
+- ~~`qemuarm`~~ (currently crashing with Swift 6.2.x - [meta-swift#59](https://github.com/jeremy-prater/meta-swift/issues/39))
 - `qemuarm64`
 - `qemux86-64`
 - `beaglebone-yocto`
