@@ -22,13 +22,15 @@ git clone https://github.com/swift-embedded-linux/meta-swift-examples.git --recu
 
 ## Build
 
-It is recommended to build and run the included Docker container for a working environment for
+It is recommended to build and run the included container for a working environment for
 building Yocto:
 
 ```console
-./build-docker.sh
-./run-docker.sh
+./build-container.sh
+./run-container.sh
 ```
+
+The scripts support either [Docker](https://docs.docker.com/desktop/setup/install/linux/) or [Podman](https://podman.io/docs/installation), so make sure either one is installed.
 
 Build the `core-image-minimal` for the default architecture (`qemuarm`):
 
@@ -62,5 +64,4 @@ MACHINE=beaglebone-yocto ./build.sh
 
 Start runner and trigger job via Github API:
 
-https://github.com/xavgru12/github-self-hosted-runner
-
+<https://github.com/xavgru12/github-self-hosted-runner>
