@@ -12,8 +12,8 @@ jobs:
         with:
           clean: false
           submodules: recursive
-      - name: build Docker
-        run: ./build-docker.sh
+      - name: build container
+        run: ./build-container.sh
       - name: build Yocto
         run: ./server-run-docker.sh ./build.sh
       - name: runqemu swift hello world
