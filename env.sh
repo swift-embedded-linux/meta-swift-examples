@@ -13,7 +13,7 @@ if [ -z "$CONTAINER_ENGINE" ]; then
   elif podman ps &> /dev/null; then
     CONTAINER_ENGINE="podman"
   else
-    echo "Error: Could not find installed or running 'docker' or 'podman'."
+    echo "Error: Unable to find a running 'docker' or 'podman' instance to use as the container engine."
     exit 1
   fi
 
