@@ -10,16 +10,6 @@
 # Left side being an absolute path on the host machine, right side being
 # an absolute path inside the container.
 #
-# The script can be run with or without parameter:
-#
-#   $ ./docker-run.sh
-#
-# to go into docker container prompt or:
-#
-#   $ ./docker-run.sh ${IMX_RELEASE}/yocto-build.sh
-#
-# to run yocto-build script inside container
-#
 
 # source the common variables
 . ./env.sh
@@ -30,9 +20,10 @@ if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
 fi
 
 # run the docker image
-docker run -it --rm \
+$CONTAINER_ENGINE run -it --rm \
+  ${CONTAINER_RUN_PARAMS} \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \
-    "${DOCKER_IMAGE_TAG}" \
+    "${IMAGE_TAG}" \
     "$@"
