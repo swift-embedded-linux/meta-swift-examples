@@ -1,4 +1,4 @@
-name: scarthgap
+name: Build & Run
 
 on:
   workflow_dispatch:
@@ -12,9 +12,9 @@ jobs:
         with:
           clean: false
           submodules: recursive
-      - name: build container
+      - name: Build Container
         run: ./build-container.sh
-      - name: build Yocto
+      - name: Build Yocto
         run: ./run-container.sh ./build.sh
-      - name: runqemu swift hello world
+      - name: Run Swift Hello World (qemu)
         run: ./run-container.sh ./execute.exp
