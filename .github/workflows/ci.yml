@@ -2,6 +2,11 @@ name: Build & Run
 
 on:
   workflow_dispatch:
+    inputs:
+      clean_build:
+        description: 'Run Clean Build'
+        type: boolean
+        default: false
 
 jobs:
   runqemu:
@@ -14,6 +19,11 @@ jobs:
           submodules: recursive
       - name: Build Container
         run: ./build-container.sh
+      - name: Clean Build Directory
+        if: ${{ github.event.inputs.clean_build == 'true' }}
+        run: |
+          rm -rf poky/build*
+          rm -rf sstate-cache
       - name: Build Yocto
         run: ./run-container.sh ./build.sh
       - name: Run Swift Hello World (qemu)
