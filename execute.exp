@@ -1,7 +1,8 @@
 #!/usr/bin/expect -f
 
 # Grab machine from env
-set MACHINE qemuarm
+# NOTE: we set default machine to qemuarm64 here since qemuarm is borked on 6.2.x
+set MACHINE qemuarm64
 catch {set MACHINE $env(MACHINE)}
 
 spawn bash -c "cd poky && source oe-init-build-env build-${MACHINE} && runqemu ${MACHINE} nographic"
