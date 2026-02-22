@@ -7,7 +7,7 @@ POKY_DIR="${POKY_DIR:=$SRC_ROOT/poky}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
 META_RASPBERRYPI_DIR=${META_RASPBERRYPI_DIR:=$SRC_ROOT/meta-raspberrypi}
 
-MACHINE="${MACHINE:=qemuarm}"
+MACHINE="${MACHINE:=qemuarm64}" # set default machine to qemuarm64 since qemuarm is borked on 6.2.x
 DOWNLOADS_DIR=${DOWNLOADS_DIR:=$SRC_ROOT/downloads}
 SSTATE_DIR=${SSTATE_DIR:=$SRC_ROOT/sstate-cache}
 

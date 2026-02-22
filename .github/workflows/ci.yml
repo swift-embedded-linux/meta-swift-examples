@@ -15,7 +15,6 @@ jobs:
       - name: build container
         run: ./build-container.sh
       - name: build Yocto
-        run: ./server-run-docker.sh ./build.sh
+        run: ./run-container.sh ./build.sh
       - name: runqemu swift hello world
-        run: ./server-run-docker.sh ./execute.exp
-
+        run: ./run-container.sh ./execute.exp
