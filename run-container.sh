@@ -19,8 +19,12 @@ if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
     exit 1
 fi
 
+if [ -t 0 ]; then
+    INTERACTIVE_RUN_PARAMS="-it"
+fi
+
 # run the docker image
-$CONTAINER_ENGINE run -it --rm \
+$CONTAINER_ENGINE run ${INTERACTIVE_RUN_PARAMS} --rm \
   ${CONTAINER_RUN_PARAMS} \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
