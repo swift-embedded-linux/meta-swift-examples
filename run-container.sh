@@ -29,5 +29,8 @@ $CONTAINER_ENGINE run ${INTERACTIVE_RUN_PARAMS} --rm \
   --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \
+  -e "MACHINE=${MACHINE}" \
+  -e "DOWNLOADS_DIR=${DOWNLOADS_DIR}" \
+  -e "SSTATE_DIR=${SSTATE_DIR}" \
     "${IMAGE_TAG}" \
     "$@"

@@ -7,10 +7,37 @@ on:
         description: 'Run Clean Build'
         type: boolean
         default: false
+      machine:
+        description: 'Machine'
+        type: choice
+        options:
+          - qemuarm
+          - qemuarm64
+          - qemux86-64
+          - beaglebone-yocto
+          - raspberrypi-armv7
+          - raspberrypi-armv8
+          - raspberrypi
+          - raspberrypi0
+          - raspberrypi0-wifi
+          - raspberrypi0-2w
+          - raspberrypi0-2w-64
+          - raspberrypi2
+          - raspberrypi3
+          - raspberrypi3-64
+          - raspberrypi4
+          - raspberrypi4-64
+          - raspberrypi5
+          - raspberrypi-cm
+          - raspberrypi-cm3
+        default: qemuarm64
 
 jobs:
   runqemu:
+    name: Build & Run Swift for ${{ github.event.inputs.machine }}
     runs-on: self-hosted
+    env:
+      MACHINE: ${{ github.event.inputs.machine }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,7 +49,7 @@ jobs:
       - name: Clean Build Directory
         if: ${{ github.event.inputs.clean_build == 'true' }}
         run: |
-          rm -rf poky/build*
+          rm -rf poky/build-${{ env.MACHINE }}
           rm -rf sstate-cache
       - name: Build Yocto
         run: ./run-container.sh ./build.sh
