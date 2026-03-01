@@ -2,18 +2,18 @@
 set -e
 
 # Configuration
-SRC_ROOT="${SRC_ROOT:=$(pwd)}"
+SRC_ROOT="${SRC_ROOT:=$(pwd)/sources}"
 POKY_DIR="${POKY_DIR:=$SRC_ROOT/poky}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
 META_RASPBERRYPI_DIR=${META_RASPBERRYPI_DIR:=$SRC_ROOT/meta-raspberrypi}
 
 MACHINE="${MACHINE:=qemuarm}"
-DOWNLOADS_DIR=${DOWNLOADS_DIR:=$SRC_ROOT/downloads}
-SSTATE_DIR=${SSTATE_DIR:=$SRC_ROOT/sstate-cache}
+BUILD_DIR=${BUILD_DIR:=build-$MACHINE}
+DOWNLOADS_DIR=${DOWNLOADS_DIR:=$(pwd)/downloads}
+SSTATE_DIR=${SSTATE_DIR:=$(pwd)/sstate-cache}
 
 # Build Yocto Poky
-cd $POKY_DIR
-source oe-init-build-env build-$MACHINE
+source $POKY_DIR/oe-init-build-env $BUILD_DIR
 bitbake-layers add-layer $META_SWIFT_DIR
 # Support for Raspberry PI devices
 if [[ $MACHINE == "raspberrypi"* ]]; then
