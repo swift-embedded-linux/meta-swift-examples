@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Ignore build directories
-build*/
+builds/
 tmp/
 sstate-cache/
 cache/
@@ -104,7 +104,3 @@ conf/bblayers.conf
 # Ignore Git submodule locks
 .gitmodules.lock
 .repo
-
-# Shared state
-downloads/
-sstate-cache/
