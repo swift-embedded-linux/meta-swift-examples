@@ -1,9 +1,9 @@
 [submodule "meta-swift"]
-	path = meta-swift
+	path = sources/meta-swift
 	url = https://github.com/jeremy-prater/meta-swift.git
 [submodule "meta-raspberrypi"]
-	path = meta-raspberrypi
+	path = sources/meta-raspberrypi
 	url = https://github.com/agherzan/meta-raspberrypi.git
 [submodule "poky"]
-	path = poky
+	path = sources/poky
 	url = https://git.yoctoproject.org/poky
