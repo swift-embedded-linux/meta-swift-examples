@@ -30,7 +30,7 @@ echo "MACHINE=\"${MACHINE}\"" >> $CONF_FILE
 echo "DL_DIR ?= \"${DOWNLOADS_DIR}\"" >> $CONF_FILE
 echo "SSTATE_DIR ?= \"${SSTATE_DIR}\"" >> $CONF_FILE
 echo 'IMAGE_FEATURES += "debug-tweaks"' >> $CONF_FILE
-echo "IMAGE_INSTALL:append = \" swift-hello-world ${EXTRA_IMAGE_INSTALL}\"" >> $CONF_FILE
+echo "IMAGE_INSTALL:append = \" libdispatch swift-hello-world ${EXTRA_IMAGE_INSTALL}\"" >> $CONF_FILE
 
 #echo 'SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"' >> $CONF_FILE
 #echo "USER_CLASSES += \"buildstats buildstats-summary\"" >> $CONF_FILE
