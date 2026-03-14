@@ -73,7 +73,7 @@ Use `git bisect good/bad` to select one commit each with known outcome.
 Build and run with:
 ```
 cd meta-swift
-./bisect.sh
+git bisect run ../bisect.sh
 ```
 This will mark failed builds as skipped. For a successful build it will run the executable hello-world and mark the commit good/bad accordingly.
 
