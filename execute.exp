@@ -4,7 +4,9 @@
 set MACHINE qemuarm
 catch {set MACHINE $env(MACHINE)}
 
-spawn bash -c "source sources/poky/oe-init-build-env builds/build-${MACHINE} && runqemu ${MACHINE} nographic"
+set script_dir [file dirname [file normalize $::argv0]]
+
+spawn bash -c "cd $script_dir && source sources/poky/oe-init-build-env builds/build-${MACHINE} && runqemu ${MACHINE} nographic"
 
 set timeout 180
 

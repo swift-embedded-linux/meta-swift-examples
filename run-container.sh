@@ -12,7 +12,8 @@
 #
 
 # source the common variables
-. ./env.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $SCRIPT_DIR/env.sh
 
 if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
     echo "Error: Current directory is outside $HOME"
