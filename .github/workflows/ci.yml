@@ -5,7 +5,7 @@ on:
 
 jobs:
   runqemu:
-    runs-on: [self-hosted, xaver-runner]
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v3
