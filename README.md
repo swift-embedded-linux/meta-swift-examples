@@ -75,5 +75,5 @@ Build and run with:
 cd meta-swift
 git bisect run ../bisect.sh
 ```
-This will mark failed builds as skipped. For a successful build it will run the executable hello-world and mark the commit good/bad accordingly.
+This will mark failed builds as skipped. For a successful build it will run the executable hello-world and mark the commit good/bad accordingly. This is repeated until the first bad commit is found or only skipped commits(due to build failures) are left.
 
