@@ -6,6 +6,8 @@ on:
 jobs:
   runqemu:
     runs-on: self-hosted
+    env:
+      IMAGE_TAG: meta-swift-examples-server
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -13,9 +15,9 @@ jobs:
           clean: false
           submodules: recursive
       - name: build container
-        run: IMAGE_TAG="meta-swift-examples-server" ./build-container.sh
+        run: ./build-container.sh
       - name: build Yocto
-        run: IMAGE_TAG="meta-swift-examples-server" ./server-run-docker.sh ./build.sh
+        run: ./server-run-docker.sh ./build.sh
       - name: runqemu swift hello world
-        run: IMAGE_TAG="meta-swift-examples-server" ./server-run-docker.sh ./execute.exp
+        run: ./server-run-docker.sh ./execute.exp
 
