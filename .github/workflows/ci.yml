@@ -13,9 +13,9 @@ jobs:
           clean: false
           submodules: recursive
       - name: build container
-        run: ./build-container.sh
+        run: IMAGE_TAG="meta-swift-examples-server" ./build-container.sh
       - name: build Yocto
-        run: ./server-run-docker.sh ./build.sh
+        run: IMAGE_TAG="meta-swift-examples-server" ./server-run-docker.sh ./build.sh
       - name: runqemu swift hello world
-        run: ./server-run-docker.sh ./execute.exp
+        run: IMAGE_TAG="meta-swift-examples-server" ./server-run-docker.sh ./execute.exp
 
