@@ -15,5 +15,5 @@ curl-native libarchive-native libmicrohttpd-native lzlib-native perlcross-native
 acl-native libffi libxcrypt sqlite3 bzip2 libnsl2 xz libedit util-linux-libuuid expat gdbm libtirpc e2fsprogs-native gnutls-native \
 libunistring gtk-doc-native util-linux-native libpcre2-native nettle-native libunistring-native libtasn1-native libidn2-native libcap-ng-native"
 
-$SCRIPT_DIR/build-new2.sh "bitbake core-image-minimal"
+$SCRIPT_DIR/build.sh "bitbake core-image-minimal"
 
