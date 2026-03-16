@@ -4,7 +4,7 @@
 
 # Docker
 
-IMAGE_TAG="meta-swift-project"
+IMAGE_TAG=${IMAGE_TAG:="meta-swift-examples"}
 WORKDIR="$PWD"
 
 if [ -z "$CONTAINER_ENGINE" ]; then
