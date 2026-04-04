@@ -5,7 +5,7 @@ for a sizeable set of supported Yocto machines for the purpose of evalulation an
 
 The following machines are supported and have been tested:
 
-- `qemuarm` 
+- `qemuarm`
 - `qemuarm64`
 - `qemux86-64`
 - `beaglebone-yocto`
