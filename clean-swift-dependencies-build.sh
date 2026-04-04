@@ -2,7 +2,7 @@
 set -ex
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-$SCRIPT_DIR/build-new2.sh "bitbake -c cleansstate swift-hello-world \
+$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-hello-world \
 quilt-native patch-native binutils-cross-arm pseudo-native rpm-native dwarfsrcfiles-native opkg-utils-native zstd-native unzip-native \
 swift-native swift-stdlib swift-testing swift-foundation gcc-cross-arm gcc-runtime swift-xctest libgcc glibc gcc libdispatch ncurses-native \
 swift-foundation-essentials linux-libc-headers autoconf-native automake-native libtool-native attr-native texinfo-dummy-native bison-native \
