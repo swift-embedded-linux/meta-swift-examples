@@ -7,6 +7,7 @@ BUILD_ROOT=${BUILD_ROOT:=$SCRIPT_DIR/builds}
 SRC_ROOT="${SRC_ROOT:=$SCRIPT_DIR/sources}"
 POKY_DIR="${POKY_DIR:=$SRC_ROOT/poky}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
+META_CLANG_DIR="${META_CLANG_DIR:=$SRC_ROOT/meta-clang}"
 META_RASPBERRYPI_DIR=${META_RASPBERRYPI_DIR:=$SRC_ROOT/meta-raspberrypi}
 
 MACHINE="${MACHINE:=qemuarm}"
@@ -18,6 +19,7 @@ SSTATE_DIR=${SSTATE_DIR:=$BUILD_ROOT/sstate-cache}
 mkdir -p $BUILD_ROOT 2> /dev/null || true
 source $POKY_DIR/oe-init-build-env $BUILD_DIR
 bitbake-layers add-layer $META_SWIFT_DIR
+bitbake-layers add-layer $META_CLANG_DIR
 # Support for Raspberry PI devices
 if [[ $MACHINE == "raspberrypi"* ]]; then
     bitbake-layers add-layer $META_RASPBERRYPI_DIR
