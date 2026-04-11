@@ -36,8 +36,9 @@ echo "IMAGE_INSTALL:append = \" swift-hello-world ${EXTRA_IMAGE_INSTALL}\"" >> $
 #echo 'SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"' >> $CONF_FILE
 #echo "USER_CLASSES += \"buildstats buildstats-summary\"" >> $CONF_FILE
 
-COMMAND="$1"
+COMMAND="$@"
 COMMAND=${COMMAND:="bitbake core-image-minimal"}
 
 # run build command
+echo $COMMAND
 $COMMAND
