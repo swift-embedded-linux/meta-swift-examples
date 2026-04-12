@@ -40,5 +40,5 @@ COMMAND="$@"
 COMMAND=${COMMAND:="bitbake core-image-minimal"}
 
 # run build command
-echo $COMMAND
+echo =============== BUILD COMMAND: $COMMAND
 $COMMAND
