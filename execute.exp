@@ -30,18 +30,17 @@ expect {
     }
 }
 
-send "hello-world\r"
+send "hello-world; echo __RET:$?__\r"
 
 expect {
-    -re {root@.*# } {
-        # got shell prompt after command
+    -re {__RET:([0-9]+)__} {
+        set ret $expect_out(1,string)
+        puts "hello-world exit code: $ret"
+        exit $ret
     }
     timeout {
-        puts "ERROR: Timeout waiting for shell prompt after command"
+        puts "ERROR: Timeout waiting for return code"
         exit 1
     }
 }
-
-# Optional: interact to keep session open
-#interact
 
