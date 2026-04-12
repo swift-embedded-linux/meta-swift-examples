@@ -3,15 +3,16 @@ set -ex
 
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-stdlib"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate libdispatch"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-foundation"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-foundation-essentials"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-foundation-icu"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-testing"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-xctest"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate swift-hello-world"
-$SCRIPT_DIR/build.sh "bitbake -c cleansstate core-image-minimal"
+$SCRIPT_DIR/build.sh bitbake -c cleansstate \
+swift-stdlib \
+libdispatch \
+swift-foundation \
+swift-foundation-essentials \
+swift-foundation-icu \
+swift-testing \
+swift-xctest \
+swift-hello-world \
+core-image-minimal
 
-$SCRIPT_DIR/build.sh "bitbake core-image-minimal"
+$SCRIPT_DIR/build.sh bitbake core-image-minimal
 
