@@ -6,6 +6,8 @@ on:
 jobs:
   runqemu:
     runs-on: self-hosted
+    env:
+      IMAGE_TAG: meta-swift-examples-server
     steps:
       - name: Checkout
         uses: actions/checkout@v3
