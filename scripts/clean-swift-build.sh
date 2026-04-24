@@ -1,8 +1,9 @@
 #!/bin/bash
 set -ex
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-$SCRIPT_DIR/build.sh bitbake -c cleansstate \
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+$ROOT_DIR/build.sh bitbake -c cleansstate \
+swift-native \
 swift-stdlib \
 libdispatch \
 swift-foundation \
@@ -13,5 +14,5 @@ swift-xctest \
 swift-hello-world \
 core-image-minimal
 
-$SCRIPT_DIR/build.sh bitbake core-image-minimal
+$ROOT_DIR/build.sh bitbake core-image-minimal
 
