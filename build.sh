@@ -2,9 +2,9 @@
 set -e
 
 # Configuration
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BUILD_ROOT=${BUILD_ROOT:=$SCRIPT_DIR/builds}
-SRC_ROOT="${SRC_ROOT:=$SCRIPT_DIR/sources}"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUILD_ROOT=${BUILD_ROOT:=$ROOT_DIR/builds}
+SRC_ROOT="${SRC_ROOT:=$ROOT_DIR/sources}"
 POKY_DIR="${POKY_DIR:=$SRC_ROOT/poky}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
 META_RASPBERRYPI_DIR=${META_RASPBERRYPI_DIR:=$SRC_ROOT/meta-raspberrypi}
