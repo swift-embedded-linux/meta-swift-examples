@@ -24,6 +24,8 @@ bitbake-layers add-layer $META_CLANG_DIR
 if [[ $MACHINE == "raspberrypi"* ]]; then
     bitbake-layers add-layer $META_RASPBERRYPI_DIR
 fi
+
+USE_CHECKOUT_CONFIG=${USE_CHECKOUT_CONFIG:-0}
 # Customize build
 touch conf/sanity.conf
 CONF_FILE=./conf/local.conf
@@ -34,6 +36,7 @@ echo "DL_DIR ?= \"${DOWNLOADS_DIR}\"" >> $CONF_FILE
 echo "SSTATE_DIR ?= \"${SSTATE_DIR}\"" >> $CONF_FILE
 echo 'IMAGE_FEATURES += "debug-tweaks"' >> $CONF_FILE
 echo "IMAGE_INSTALL:append = \" swift-hello-world ${EXTRA_IMAGE_INSTALL}\"" >> $CONF_FILE
+echo "USE_CHECKOUT_CONFIG = \"${USE_CHECKOUT_CONFIG}\"" >> $CONF_FILE
 
 #echo 'SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"' >> $CONF_FILE
 #echo "USER_CLASSES += \"buildstats buildstats-summary\"" >> $CONF_FILE
