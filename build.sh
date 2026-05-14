@@ -13,6 +13,16 @@ BUILD_DIR=${BUILD_DIR:=$BUILD_ROOT/build-$MACHINE}
 DOWNLOADS_DIR=${DOWNLOADS_DIR:=$BUILD_ROOT/downloads}
 SSTATE_DIR=${SSTATE_DIR:=$BUILD_ROOT/sstate-cache}
 
+# For SWIFT_CXX_RUNTIME, we have 2 choices:
+# - "gnu" = libstdc++
+# - "llvm" = libc++
+SWIFT_CXX_RUNTIME=${SWIFT_CXX_RUNTIME:="gnu"}
+if [ $SWIFT_CXX_RUNTIME != "gnu" ] && [ $SWIFT_CXX_RUNTIME != "llvm" ]; then
+    echo "Invalid value for SWIFT_CXX_RUNTIME: $SWIFT_CXX_RUNTIME"
+    echo "Valid values are: gnu, llvm"
+    exit 1
+fi
+
 # Build Yocto Poky
 mkdir -p $BUILD_ROOT 2> /dev/null || true
 source $OE_DIR/oe-init-build-env $BUILD_DIR
@@ -33,6 +43,7 @@ echo "DL_DIR ?= \"${DOWNLOADS_DIR}\"" >> $CONF_FILE
 echo "SSTATE_DIR ?= \"${SSTATE_DIR}\"" >> $CONF_FILE
 echo 'EXTRA_IMAGE_FEATURES += "allow-empty-password empty-root-password allow-root-login post-install-logging"' >> $CONF_FILE
 echo "IMAGE_INSTALL:append = \" swift-hello-world ${EXTRA_IMAGE_INSTALL}\"" >> $CONF_FILE
+echo "SWIFT_CXX_RUNTIME = \"$SWIFT_CXX_RUNTIME\"" >> $CONF_FILE
 
 #echo 'SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"' >> $CONF_FILE
 #echo "USER_CLASSES += \"buildstats buildstats-summary\"" >> $CONF_FILE
