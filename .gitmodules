@@ -13,3 +13,6 @@
 [submodule "sources/openembedded-core"]
 	path = sources/openembedded-core
 	url = https://git.openembedded.org/openembedded-core
+[submodule "sources/meta-yocto"]
+	path = sources/meta-yocto
+	url = https://git.yoctoproject.org/meta-yocto
