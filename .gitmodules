@@ -7,3 +7,9 @@
 [submodule "poky"]
 	path = sources/poky
 	url = https://git.yoctoproject.org/poky
+[submodule "sources/bitbake"]
+	path = sources/bitbake
+	url = https://git.openembedded.org/bitbake
+[submodule "sources/openembedded-core"]
+	path = sources/openembedded-core
+	url = https://git.openembedded.org/openembedded-core
