@@ -65,3 +65,15 @@ MACHINE=beaglebone-yocto ./build.sh
 Start runner and trigger job via Github API:
 
 <https://github.com/xavgru12/github-self-hosted-runner>
+
+## Bisecting with Git
+Git provides the possibility to [bisect commits](https://git-scm.com/docs/git-bisect).
+Start bisect by: `git bisect start` in the submodule/repository.
+Use `git bisect good/bad` to select one commit each with known outcome.
+Build and run with:
+```
+cd sources/meta-swift
+git bisect run ../../scripts/bisect.sh
+```
+This will mark failed builds as skipped. For a successful build it will run the executable hello-world and mark the commit good/bad accordingly. This is repeated until the first bad commit is found or only skipped commits(due to build failures) are left.
+

@@ -48,8 +48,9 @@ echo "SWIFT_CXX_RUNTIME = \"$SWIFT_CXX_RUNTIME\"" >> $CONF_FILE
 #echo 'SSTATE_MIRRORS ?= "file://.* http://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"' >> $CONF_FILE
 #echo "USER_CLASSES += \"buildstats buildstats-summary\"" >> $CONF_FILE
 
-COMMAND="$1"
+COMMAND="$@"
 COMMAND=${COMMAND:="bitbake core-image-minimal"}
 
 # run build command
+echo =============== BUILD COMMAND: $COMMAND
 $COMMAND
