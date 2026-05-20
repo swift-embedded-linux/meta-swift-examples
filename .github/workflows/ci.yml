@@ -1,4 +1,4 @@
-name: scarthgap
+name: build & runqemu
 
 on:
   workflow_dispatch:
@@ -20,4 +20,3 @@ jobs:
         run: ./server-run-docker.sh ./build.sh
       - name: runqemu swift hello world
         run: ./server-run-docker.sh ./execute.exp
-
