@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && \
     apt install -y gawk wget git-core diffstat unzip texinfo \
-    gcc-multilib build-essential chrpath socat file cpio python3 \
+    build-essential chrpath socat file cpio python3 \
     python3-pip python3-pexpect xz-utils debianutils iputils-ping \
     libsdl1.2-dev xterm tar locales net-tools rsync sudo vim curl zstd \
     liblz4-tool libssl-dev bc lzop libgnutls28-dev efitools git-lfs \
