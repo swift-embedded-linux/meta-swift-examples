@@ -6,7 +6,7 @@ catch {set MACHINE $env(MACHINE)}
 
 set root_dir [file dirname [file normalize $::argv0]]
 
-spawn bash -c "cd $root_dir && source sources/poky/oe-init-build-env builds/build-${MACHINE} && runqemu ${MACHINE} nographic"
+spawn bash -c "cd $root_dir && source sources/openembedded-core/oe-init-build-env builds/build-${MACHINE} && runqemu ${MACHINE} snapshot nographic"
 
 set timeout 180
 
