@@ -7,3 +7,6 @@
 [submodule "poky"]
 	path = sources/poky
 	url = https://git.yoctoproject.org/poky
+[submodule "sources/meta-clang"]
+	path = sources/meta-clang
+	url = https://github.com/kraj/meta-clang.git
