@@ -3,7 +3,7 @@ set -ex
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 $ROOT_DIR/build.sh bitbake -c cleansstate \
-swift-native \
+virtual/swift-native \
 swift-stdlib \
 libdispatch \
 swift-foundation \
