@@ -23,8 +23,8 @@ fi
 # run the docker image
 $CONTAINER_ENGINE run -it --rm \
   ${CONTAINER_RUN_PARAMS} \
-  --volume ${HOME}:${HOME} \
-  --device /dev/net/tun \
+  --volume "${HOME}":"${HOME}" \
+  --volume meta-swift-examples:"${PWD}/builds" \
   --cap-add=NET_ADMIN \
     "${IMAGE_TAG}" \
     "$@"

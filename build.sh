@@ -3,6 +3,8 @@ set -e
 
 # Configuration
 BUILD_ROOT=${BUILD_ROOT:=$(pwd)/builds}
+DOWNLOADS_DIR=${DOWNLOADS_DIR:=$(pwd)/downloads}
+SSTATE_DIR=${SSTATE_DIR:=$(pwd)/sstate-cache}
 SRC_ROOT="${SRC_ROOT:=$(pwd)/sources}"
 OE_DIR="${OE_DIR:=$SRC_ROOT/openembedded-core}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
