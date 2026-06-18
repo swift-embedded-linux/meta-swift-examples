@@ -20,11 +20,18 @@ if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
     exit 1
 fi
 
+if [ "$#" -gt 0 ]; then
+  COMMAND="$*"
+else
+  COMMAND="exec bash"
+fi
+
 # run the docker image
+BUILDS_DIR="${PWD}/builds"
 $CONTAINER_ENGINE run -it --rm \
   ${CONTAINER_RUN_PARAMS} \
   --volume "${HOME}":"${HOME}" \
-  --volume meta-swift-examples:"${PWD}/builds" \
+  --volume meta-swift-examples:"${BUILDS_DIR}" \
   --cap-add=NET_ADMIN \
-    "${IMAGE_TAG}" \
-    "$@"
+  "${IMAGE_TAG}" \
+  /bin/bash -c "sudo chown $(id -u):$(id -g) ${BUILDS_DIR} && $COMMAND"
