@@ -30,6 +30,7 @@ fi
 BUILDS_DIR="${PWD}/builds"
 $CONTAINER_ENGINE run -it --rm \
   ${CONTAINER_RUN_PARAMS} \
+  --device /dev/net/tun \
   --volume "${HOME}":"${HOME}" \
   --volume meta-swift-examples:"${BUILDS_DIR}" \
   --cap-add=NET_ADMIN \
