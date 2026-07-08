@@ -29,7 +29,3 @@ else
   echo "Error: Unsupported container runtime '${CONTAINER_ENGINE}'."
   exit 1
 fi
-
-# Yocto
-
-YOCTO_DIR="$PWD"

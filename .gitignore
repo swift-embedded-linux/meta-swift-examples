@@ -58,6 +58,7 @@ sstate-cache/
 cache/
 deploy/
 downloads/
+output/
 
 # Ignore BitBake temporary files
 bitbake.lock

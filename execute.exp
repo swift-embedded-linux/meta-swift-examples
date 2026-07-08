@@ -6,7 +6,7 @@ catch {set MACHINE $env(MACHINE)}
 
 set root_dir [file dirname [file normalize $::argv0]]
 
-spawn bash -c "cd $root_dir && source sources/openembedded-core/oe-init-build-env builds/build-${MACHINE} && runqemu ${MACHINE} snapshot nographic"
+spawn bash -c "cd $root_dir && ./run.sh"
 
 set timeout 180
 
@@ -43,4 +43,3 @@ expect {
         exit 1
     }
 }
-

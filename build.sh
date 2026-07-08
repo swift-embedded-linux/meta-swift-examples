@@ -3,6 +3,8 @@ set -e
 
 # Configuration
 BUILD_ROOT=${BUILD_ROOT:=$(pwd)/builds}
+DOWNLOADS_DIR=${DOWNLOADS_DIR:=$(pwd)/downloads}
+SSTATE_DIR=${SSTATE_DIR:=$(pwd)/sstate-cache}
 SRC_ROOT="${SRC_ROOT:=$(pwd)/sources}"
 OE_DIR="${OE_DIR:=$SRC_ROOT/openembedded-core}"
 META_SWIFT_DIR="${META_SWIFT_DIR:=$SRC_ROOT/meta-swift}"
@@ -10,8 +12,7 @@ META_RASPBERRYPI_DIR=${META_RASPBERRYPI_DIR:=$SRC_ROOT/meta-raspberrypi}
 
 MACHINE="${MACHINE:=qemuarm}"
 BUILD_DIR=${BUILD_DIR:=$BUILD_ROOT/build-$MACHINE}
-DOWNLOADS_DIR=${DOWNLOADS_DIR:=$BUILD_ROOT/downloads}
-SSTATE_DIR=${SSTATE_DIR:=$BUILD_ROOT/sstate-cache}
+OUTPUT_DIR=${OUTPUT_DIR:=$(pwd)/output/build-$MACHINE}
 
 # For SWIFT_CXX_RUNTIME, we have 2 choices:
 # - "gnu" = libstdc++
@@ -54,3 +55,7 @@ COMMAND=${COMMAND:="bitbake core-image-minimal"}
 # run build command
 echo =============== BUILD COMMAND: $COMMAND
 $COMMAND
+
+echo "============== Copying build artifacts to output directory $OUTPUT_DIR"
+mkdir -p $OUTPUT_DIR 2> /dev/null || true
+cp -a $BUILD_DIR/tmp/deploy/* $OUTPUT_DIR 2> /dev/null || true

@@ -20,11 +20,34 @@ if [[ $PWD != $HOME* && $(whoami) != "root" ]]; then
     exit 1
 fi
 
+if [ "$#" -gt 0 ]; then
+  COMMAND="$*"
+else
+  COMMAND="exec bash"
+fi
+
+# Option to put the Yocto builds/ directory in a volume
+# Defaults to true on macOS (needed due to hard link limitation), and false otherwise
+if [ -z "$BUILD_IN_VOLUME" ]; then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Detected macOS host, automatically setting BUILD_IN_VOLUME to true"
+    BUILD_IN_VOLUME=true
+  else
+    BUILD_IN_VOLUME=false
+  fi
+fi
+
+BUILDS_DIR="${PWD}/builds"
+if [ "$BUILD_IN_VOLUME" = "true" ] || [ "$BUILD_IN_VOLUME" = "1" ]; then
+  echo "Using volume for Yocto builds directory: ${BUILDS_DIR}"
+  CONTAINER_RUN_PARAMS="${CONTAINER_RUN_PARAMS} --volume meta-swift-examples:${BUILDS_DIR}"
+fi
+
 # run the docker image
 $CONTAINER_ENGINE run -it --rm \
-  ${CONTAINER_RUN_PARAMS} \
-  --volume ${HOME}:${HOME} \
   --device /dev/net/tun \
   --cap-add=NET_ADMIN \
-    "${IMAGE_TAG}" \
-    "$@"
+  --volume "${HOME}":"${HOME}" \
+  ${CONTAINER_RUN_PARAMS} \
+  "${IMAGE_TAG}" \
+  /bin/bash -c "sudo chown $(id -u):$(id -g) ${BUILDS_DIR} && $COMMAND"
