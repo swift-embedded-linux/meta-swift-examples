@@ -45,7 +45,6 @@ fi
 
 # run the docker image
 $CONTAINER_ENGINE run -it --rm \
-  --device /dev/net/tun \
   --cap-add=NET_ADMIN \
   --volume "${HOME}":"${HOME}" \
   ${CONTAINER_RUN_PARAMS} \
