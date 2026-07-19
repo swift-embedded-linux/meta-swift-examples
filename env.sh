@@ -12,6 +12,8 @@ if [ -z "$CONTAINER_ENGINE" ]; then
     CONTAINER_ENGINE="docker"
   elif podman ps &> /dev/null; then
     CONTAINER_ENGINE="podman"
+  elif container ls &> /dev/null; then
+    CONTAINER_ENGINE="container"
   else
     echo "Error: Unable to find a running 'docker' or 'podman' instance to use as the container engine."
     exit 1
@@ -22,9 +24,11 @@ fi
 
 if [ "$CONTAINER_ENGINE" = "docker" ]; then
   # Add extra params for docker if needed
-  CONTAINER_RUN_PARAMS=""
+  CONTAINER_RUN_PARAMS="--device /dev/net/tun"
 elif [ "$CONTAINER_ENGINE" = "podman" ]; then
-  CONTAINER_RUN_PARAMS="--userns=keep-id:uid=$(id -u),gid=$(id -g)"
+  CONTAINER_RUN_PARAMS="--device /dev/net/tun --userns=keep-id:uid=$(id -u),gid=$(id -g)"
+elif [ "$CONTAINER_ENGINE" = "container" ]; then
+  CONTAINER_RUN_PARAMS=""
 else
   echo "Error: Unsupported container runtime '${CONTAINER_ENGINE}'."
   exit 1
