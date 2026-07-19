@@ -23,10 +23,13 @@ if [ -z "$CONTAINER_ENGINE" ]; then
 fi
 
 if [ "$CONTAINER_ENGINE" = "docker" ]; then
-  # Add extra params for docker if needed
   CONTAINER_RUN_PARAMS="--device /dev/net/tun"
 elif [ "$CONTAINER_ENGINE" = "podman" ]; then
-  CONTAINER_RUN_PARAMS="--device /dev/net/tun --userns=keep-id:uid=$(id -u),gid=$(id -g)"
+  CONTAINER_RUN_PARAMS="\
+    --device /dev/net/tun \
+    --userns=keep-id:uid=$(id -u),gid=$(id -g) \
+    --security-opt label:disable \
+  "
 elif [ "$CONTAINER_ENGINE" = "container" ]; then
   CONTAINER_RUN_PARAMS=""
 else
